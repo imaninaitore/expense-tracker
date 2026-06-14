@@ -62,37 +62,37 @@ function deleteExpense(id) {
 
 //render function
 function renderExpenses() {
-
     expenseList.innerHTML = "";
     let total = 0;
 
     const selectedFilter = filter.value;
 
-    expenses.forEach(expense => {
+    const filteredExpenses = manager.expenses.filter(expense => {
+        return selectedFilter === "All" || expense.category === selectedFilter; //filtering using functional programming 
+    })
 
-        // FILTER LOGIC
-        if (selectedFilter !== "All" && expense.category !== selectedFilter) {
-            return;
-        }
+filteredExpenses.forEach(expense => { 
 
-         total += Number(expense.amount);
+//destructuring  - unpacking the objects into variables
+ const { id, description, amount, category } = expense;    
+
+     total += Number(amount); // calculating totals using loop- adds each expense amount to total
 
         const div = document.createElement("div");
 
-        div.textContent =
-        `${expense.description} - Ksh ${expense.amount} - ${expense.category}`;
+        div.textContent = `${description} - Ksh ${amount} - ${category}`;
 
         const btn = document.createElement("button");
         btn.textContent = "Delete";
 
-        btn.onclick = () => deleteExpense(expense.id);
+        btn.onclick = () => deleteExpense(id);
 
         div.appendChild(btn);
         expenseList.appendChild(div);
     });
 
     totalDisplay.textContent = total;
-}
+
 
 
 //add btn handler

@@ -6,7 +6,15 @@ class Expense {
         this.category = category;
     }
 }
+class ExpenseManager {
+    constructor() {
+        this.expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    }
 
+    save() {
+        localStorage.setItem("expenses", JSON.stringify(this.expenses));
+    }
+}
 
 
 //state

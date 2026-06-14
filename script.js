@@ -77,6 +77,7 @@ filteredExpenses.forEach(expense => {
         div.textContent = `${description} - Ksh ${amount} - ${category}`;
 
         const btn = document.createElement("button");
+         btn.classList.add("delete-btn");
         btn.textContent = "Delete";
 
         btn.onclick = () => deleteExpense(id);

@@ -12,18 +12,21 @@ The application should allows users to manage their daily expenses, track spendi
 
 ## technologies used
 - HTML: Create a structured UI for the Expense Tracker.
-- CSS: Style the UI for better presentation.
+- CSS and tailwind css: Style the UI for better presentation.
 - JavaScript: Implement the core functionality.
 - LocalStorage: Store and retrieve expenses persistently.
 - Jest: Unit test functions to ensure correct behavior.
 - Git: Use version control with regular commits and clear commit messages.
 - Deployment: Deploy the project on GitHub Pages.
+
 ## Project Structure
-```in-check-calorie-counter
+
+```expense-tracker
 ├── index.html
 ├── style.css  
 ├── script.js
 └── README.md  
+└── package.json
 └── LICENSE  
 ```
 
@@ -31,9 +34,9 @@ The application should allows users to manage their daily expenses, track spendi
 
 1. **Clone the repository:**
  ```bash
-git clone https://github.com/imaninaitore/in-check-calorie-counter.git
+git clone https://github.com/imaninaitore/expense-tracker.git
 
-cd in-check-calorie-counter
+cd expense-tracker
 ```  
 
 2. **Open the project:**

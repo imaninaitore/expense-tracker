@@ -9,15 +9,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<h1 class="text-slate-100 lg:text-3xl text-2xl sm:tlg:ext-3xl  text-2xl sm:text-3xl flex justify-center"> EXPENSE TRACKER</h1>
+  
 <div class=" dashboard bg-white/5 backdrop-blur-md border border-cyan-500/30 rounded-2xl grid grid-cols-1 gap-6 p-6 ">
 
 <!--DASHBOARD-->
 <div class="bg-white/5 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-6 ">
 <h1 class="text-cyan-300" >My dashboard</h1>
+
 <h2 id="total"></h2>
 
+<h2>Filter Expenses</h2>
 
-<h1 class="text-slate-100 lg:text-3xl text-2xl sm:tlg:ext-3xl  text-2xl sm:text-3xl flex justify-center"> EXPENSE TRACKER</h1>
+<select id="filter">
+  <option value="All">All</option>
+  <option value="Food">Food</option>
+  <option value="Transport">Transport</option>
+  <option value="Bills">Bills</option>
+  <option value="Shopping">Shopping</option>
+</select>
+</div>
+
    
 <!--expense details container-->
 <div class="bg-white/5 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-6 ">

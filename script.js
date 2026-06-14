@@ -6,6 +6,7 @@ class Expense {
         this.category = category;
     }
 }
+//the control center
 class ExpenseManager {
     constructor() {
         this.expenses = JSON.parse(localStorage.getItem("expenses")) || [];
@@ -16,7 +17,7 @@ class ExpenseManager {
     }
 }
 
-
+const manager = new ExpenseManager(); //creates controller saying that this now manages all expenses
 //state
 let expenses = [];
 
@@ -37,17 +38,16 @@ function saveData() {
 
 //add expense function
 function addExpense(description, amount, category) {
-
-    const expense = {
-        id: Date.now(),
+    const expense = new Expense ( //creating new expense object using the expense class blueprint
+        Date.now(),
         description,
-        amount,
+        Number(amount), //converts string to number
         category
-    };
+    );
 
-    expenses.push(expense);
+    manager.expenses.push(expense); //storing inside manager
 
-    saveData();
+    manager.save(); //saving to localstorage
     renderExpenses();
 }
 

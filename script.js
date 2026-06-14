@@ -87,14 +87,20 @@ function renderExpenses() {
     expenseList.innerHTML = "";
     total = 0;
 
+    const selectedFilter = filterCategory.value;
+
     expenses.forEach(expense => {
+
+        // FILTER LOGIC
+        if (selectedFilter !== "All" && expense.category !== selectedFilter) {
+            return;
+        }
 
         total += Number(expense.amount);
 
         const div = document.createElement("div");
 
-        const text = document.createElement("span");
-        text.textContent =
+        div.textContent =
         `${expense.description} - Ksh ${expense.amount} - ${expense.category}`;
 
         const btn = document.createElement("button");
@@ -102,9 +108,7 @@ function renderExpenses() {
 
         btn.onclick = () => deleteExpense(expense.id);
 
-        div.appendChild(text);
         div.appendChild(btn);
-
         expenseList.appendChild(div);
     });
 
@@ -148,4 +152,5 @@ addButton.addEventListener("click", function () {
 });
 
 
-
+//filter function
+const filter = document.getElementById("filter");

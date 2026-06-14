@@ -11,43 +11,57 @@
 <body>
 <div class=" dashboard bg-white/5 backdrop-blur-md border border-cyan-500/30 rounded-2xl grid grid-cols-1 gap-6 p-6 ">
 
+<!--DASHBOARD-->
+<div class="bg-white/5 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-6 ">
+<h1 class="text-cyan-300" >My dashboard</h1>
+<h2 id="total"></h2>
+
+
 <h1 class="text-slate-100 lg:text-3xl text-2xl sm:tlg:ext-3xl  text-2xl sm:text-3xl flex justify-center"> EXPENSE TRACKER</h1>
    
 <!--expense details container-->
 <div class="bg-white/5 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-6 ">
-  <!--expense description-->  
+
+<!--expense description-->  
 <input class="expense-description" type="text" id="expense-description" placeholder="Enter expense description"/>
 
 <!--amount in Ksh-->
-<input class="amount" type="number" placeholder="enter amount"/>
+<input id="amount" type="number" placeholder="enter amount"/>
 
 <!--category-->
-<h2>Select expense category</h2>
-<input type="checkbox" id="category"/>
+<h3>Select expense category</h3>
+
+<label for="category">
+<input type="radio" name="category" id="category1"/>
+Food
+</label>
+
+<label for="category">
+<input type="radio"  name="category" id="category2"/>
+Transport
+</label>
+
+<label for="category">
+<input type="radio"  name="category" id="category3"/>
+Bills
+</label>
+
+<label for="category">
+<input type="radio"  name="category" id="category4"/>
+Shopping
+</label>
 
 <!--add button-->
-<button id="AddButton">Add Expense</button>
-
-
+<button class="AddButton" id="AddButton">Add Expense</button>
 </div>
+
 
 <!--Expense list-->
-<div id="expense-list" class="bg-white/5 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-6 ">
+<div id="expense-list" class="expense-list"> </div>
+
 
 </div>
 
-<!--card 3-->
-<div class="bg-white/5 backdrop-blur-md border border-cyan-500/30 rounded-2xl p-6 ">
-
-<h2 class="text-cyan-300" >Spending Insight</h2>
-
-<li  class="text-sm sm:text-base lg:text-2xl text-slate-100" >“Food & snacks are your highest daily expense ”</li>
-<li  class="text-sm sm:text-base lg:text-2xl text-slate-100" >“Transport spending increases on weekdays”</li>
-<li  class="text-sm sm:text-base lg:text-2xl text-slate-100" >“Entertainment subscriptions are consistent monthly costs” </li>
-
-</div>
-
-</div>
-
+<script src="script.js"></script>
 </body>
 </html>

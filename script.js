@@ -6,6 +6,7 @@ class Expense {
         this.category = category;
     }
 }
+
 //the control center
 class ExpenseManager {
     constructor() {
@@ -15,11 +16,14 @@ class ExpenseManager {
     save() {
         localStorage.setItem("expenses", JSON.stringify(this.expenses));
     }
+
+    addExpense(expense) {
+    this.expenses.push(expense);
+    this.save();
+    }
 }
 
 const manager = new ExpenseManager(); //creates controller saying that this now manages all expenses
-//state
-let expenses = [];
 
 //elements
 const expenseList = document.getElementById("expense-list");
@@ -28,26 +32,17 @@ const addButton = document.getElementById("AddButton");
 const filter = document.getElementById("filter");
 
 
-//load from local storage
-expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
-//save
-function saveData() {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-}
-
 //add expense function
 function addExpense(description, amount, category) {
-    const expense = new Expense ( //creating new expense object using the expense class blueprint
+    const expense = new Expense (   //creating new expense object using the expense class blueprint
         Date.now(),
         description,
         Number(amount), //converts string to number
         category
     );
 
-    manager.expenses.push(expense); //storing inside manager
+    manager.addExpense(expense);
 
-    manager.save(); //saving to localstorage
     renderExpenses();
 }
 
@@ -69,10 +64,9 @@ function renderExpenses() {
 
     const filteredExpenses = manager.expenses.filter(expense => {
         return selectedFilter === "All" || expense.category === selectedFilter; //filtering using functional programming 
-    })
+});
 
-filteredExpenses.forEach(expense => { 
-
+filteredExpenses.forEach(expense => {
 //destructuring  - unpacking the objects into variables
  const { id, description, amount, category } = expense;    
 
@@ -92,21 +86,22 @@ filteredExpenses.forEach(expense => {
     });
 
     totalDisplay.textContent = total;
-
+}
 
 
 //add btn handler
-addButton.addEventListener("click", function () {
+addButton.addEventListener("click", function (e) {
+    e.preventDefault(); // IMPORTANT (stops refresh issues)
 
-    const description =
-    document.getElementById("expense-description").value;
+    const description = document.getElementById("expense-description").value.trim();
+    const amount = document.getElementById("amount").value;
 
-    const amount =
-    document.getElementById("amount").value;
+    const selectedCategory = document.querySelector('input[name="category"]:checked');
 
-    const selectedCategory = document.querySelector(
-        'input[name="category"]:checked'
-    );
+    if (!description || !amount) {
+        alert("Please fill in description and amount");
+        return;
+    }
 
     if (!selectedCategory) {
         alert("Select a category");
@@ -115,17 +110,16 @@ addButton.addEventListener("click", function () {
 
     const category = selectedCategory.value;
 
-    addExpense(description, amount, selectedCategory.value);
+    addExpense(description, amount, category);
 
-    // clear inputs
     document.getElementById("expense-description").value = "";
     document.getElementById("amount").value = "";
     selectedCategory.checked = false;
+
 });
 
 //make filter reactive
 filter.addEventListener("change", function () {
         renderExpenses();
 });
-
 renderExpenses();

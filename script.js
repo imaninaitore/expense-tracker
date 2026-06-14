@@ -54,9 +54,9 @@ function addExpense(description, amount, category) {
 // delete function
 function deleteExpense(id) {
 
-    expenses = expenses.filter(expense => expense.id !== id);
+    manager.expenses = manager.expenses.filter(expense => expense.id !== id);  //removes expense with matching id
 
-    saveData();
+    manager.save();
     renderExpenses();
 }
 

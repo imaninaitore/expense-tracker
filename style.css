@@ -1,5 +1,13 @@
 body {
 background-color: rgb(30, 24, 69);
+margin: 0;
+  display: flex;
+  flex-direction: column; /* Stacks multiple containers vertically */
+  align-items: center;    /* Centers containers horizontally */
+  justify-content: center; /* Optional: Centers containers vertically */
+  min-height: 100vh;      /* Takes up full screen height */
+  padding: 0 20px;        /* Guarantees a 20px space on the left/right sides */
+  box-sizing: border-box;
 }
 
 .AddButton{

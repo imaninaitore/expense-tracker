@@ -24,6 +24,10 @@ margin: 0;
     padding: 1.5rem;     /* 24px */
 }
 
+.delete-btn{
+    color: red;
+    padding: 10px;
+}
 
 
 
